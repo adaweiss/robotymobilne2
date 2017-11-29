@@ -1,4 +1,4 @@
-function [PC] = PCA(X)
+function [PC,signals] = PCA(X)
 
 [M,N] = size(X);
 
@@ -12,14 +12,15 @@ C = 1/(N-1)*X*X';
 
 V = diag(V);
 
-size(V)
+%size(V)
 %figure;
 %plot([1:200],V); hold on;
 
 [junk,indeksy] = sort(V,'descend');
 V=V(indeksy);
 PC=PC(:,indeksy);
+%figure;
 %stem([1:200],V)
-
+signals=PC'*X;
 
 end
